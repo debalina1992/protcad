@@ -11,7 +11,7 @@ export MAKE = make
 
 SHELL = /bin/sh
 
-TARGETS = example
+TARGETS = example intraSoluteEnergy mutation1 mutation2 mutation4 mutpch getSequence
 
 .SUFFIXES:
 .SUFFIXES: .cc .o .h .f .a
@@ -66,6 +66,31 @@ libprotcad.a : $(LIB_CC_OBJECTS) $(LIB_F77_OBJECTS)
 		cd $(OBJDIR) && ranlib libprotcad.a
 
 example : libprotcad.a example.cc
+	cd $(OBJDIR) && $(CXX) $(CFLAGS) $^ -o $@ $(INC_BASE) $(LIB_BASE)
+	cd $(OBJDIR) && mv $@ $(BINDIR)
+
+intraSoluteEnergy : libprotcad.a intraSoluteEnergy.cc
+	cd $(OBJDIR) && $(CXX) $(CFLAGS) $^ -o $@ $(INC_BASE) $(LIB_BASE)
+	cd $(OBJDIR) && mv $@ $(BINDIR)
+
+mutation1 : libprotcad.a mutation1.cc
+	cd $(OBJDIR) && $(CXX) $(CFLAGS) $^ -o $@ $(INC_BASE) $(LIB_BASE)
+	cd $(OBJDIR) && mv $@ $(BINDIR)
+
+
+mutation2 : libprotcad.a mutation2.cc
+	cd $(OBJDIR) && $(CXX) $(CFLAGS) $^ -o $@ $(INC_BASE) $(LIB_BASE)
+	cd $(OBJDIR) && mv $@ $(BINDIR)
+
+mutation4 : libprotcad.a mutation4.cc
+	cd $(OBJDIR) && $(CXX) $(CFLAGS) $^ -o $@ $(INC_BASE) $(LIB_BASE)
+	cd $(OBJDIR) && mv $@ $(BINDIR)
+
+mutpch : libprotcad.a mutpch.cc
+	cd $(OBJDIR) && $(CXX) $(CFLAGS) $^ -o $@ $(INC_BASE) $(LIB_BASE)
+	cd $(OBJDIR) && mv $@ $(BINDIR)
+
+getSequence : libprotcad.a getSequence.cc
 	cd $(OBJDIR) && $(CXX) $(CFLAGS) $^ -o $@ $(INC_BASE) $(LIB_BASE)
 	cd $(OBJDIR) && mv $@ $(BINDIR)
 

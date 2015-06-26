@@ -477,10 +477,12 @@ int protein::mutate(vector <int> _position, UInt _resType)
 
 void protein::mutateWBC(const UInt _chainIndex, const UInt _resIndex, const UInt _aaIndex)
 {
-//	cout << "0" << endl;	
+	cout << "0" << endl;	
 	if(_chainIndex < itsChains.size())
 	{	itsChains[_chainIndex]->mutate(_resIndex,_aaIndex);
+		cout << "1" << endl;
 		itsChains[_chainIndex]->commitLastMutation();
+		cout << "2" << endl;
 		// find chain in independent chain list
 		UInt indChainIndex = 0;
 		for (UInt i=0; i<itsIndependentChainsMap.size(); i++)
@@ -488,6 +490,7 @@ void protein::mutateWBC(const UInt _chainIndex, const UInt _resIndex, const UInt
 			{	indChainIndex = i;
 			}
 		}
+		cout << "3" << endl;
 
 		UInt numSymLinkedChains = itsChainLinkageMap[indChainIndex].size();
 		if ( /*numSymLinkedChains != 1 &&*/ itsChainLinkageMap[indChainIndex][0] != -1)
