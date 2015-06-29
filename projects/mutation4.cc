@@ -56,7 +56,7 @@ int a=2;
 		UInt restype = _prot->getTypeFromResNum(0,randres);
 		
 
-		_prot->mutateWBC(0,randres,53);
+		_prot->mutateWBC(0,randres,54);
 		_prot->protOptSolvent(500);
 		double intra2=_prot->intraSoluteEnergy(true);
 	if (intra2 > intra)
