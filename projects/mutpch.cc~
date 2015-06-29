@@ -32,7 +32,7 @@ int main (int argc, char* argv[])
 
 	 	//UInt resNum = _prot->getNumResidues(0);
 		//UInt randres = rand() % resNum;
-		_prot->mutateWBC(0,8,53);
+		_prot->mutateWBC(0,8,54);
 return 0;
 }
 
