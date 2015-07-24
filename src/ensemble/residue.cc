@@ -82,7 +82,7 @@ residue::residue(const UInt _itsType)
 }
 
 residue::residue(const UInt _itsType, const bool _hFlag)
-{	cout << "-2 ";
+{//	cout << "-2 ";
 	hydrogensOn = _hFlag;
 	polarHydrogensOn = false;
 	if(!dataBaseBuilt)
@@ -90,15 +90,16 @@ residue::residue(const UInt _itsType, const bool _hFlag)
 		cout << "itstype and hflag build:  ";
 		buildDataBase();
 	}
-	cout << "-1 ";
+//	cout << "-1 ";
 	itsType = _itsType;
-	cout << "0  ";
+//	cout << "0  ";
 	initializeAtomsAndConnectivity();
-	cout << "1  ";
+//	cout << "1  ";
 	initializeSidechainDihedralAngles();
-	cout << "2:  ";
+//	cout << "2:  ";
 	if(hydrogensOn)
 	{
+		//cout<< "H on" << endl;
 		initializePolarHDihedralAngle();
 	}
 }
@@ -1338,21 +1339,23 @@ void residue::interpretBondingPattern()
 // ************************************************************************
 residue* residue::mutate(const UInt _newTypeIndex)
 {
-	cout << "Entering residue::mutate" << endl;
+	//cout << "Entering residue::mutate" << endl;
 	residue* newAA = new residue( _newTypeIndex, hydrogensOn );
-	cout << "hydrogensOn = " << hydrogensOn << endl;
+	//cout << "hydrogensOn = " << hydrogensOn << endl;
 	//residue* newAA = new residue( _newTypeIndex );
 	UInt numbpt = getNumBpt(_newTypeIndex);
 	for (UInt i=0; i<numbpt; i++)
 	{
+		//cout << "residue.cc l:1349" << endl;
 		dblVec Coord_A_target = getMainChain(i)->getCoords();
 		dblVec Coord_B_target = getMainChain(i+1)->getCoords();
 		dblVec Coord_C_target = getMainChain(i+2)->getCoords();
+		//cout << "till coord residue.cc l:1352 " << endl;
 
 #ifdef _MUTATE_DEBUG
-		cout << "Coord_A_target : " << Coord_A_target << endl;
-		cout << "Coord_B_target : " << Coord_B_target << endl;
-		cout << "Coord_C_target : " << Coord_C_target << endl;
+		//cout << "Coord_A_target : " << Coord_A_target << endl;
+		//cout << "Coord_B_target : " << Coord_B_target << endl;
+		//cout << "Coord_C_target : " << Coord_C_target << endl;
 #endif
 
 		dblVec Coord_A_new(3);
@@ -1370,10 +1373,10 @@ residue* residue::mutate(const UInt _newTypeIndex)
 		Coord_C_new = newAA->getMainChain(i+2)->getCoords();
 
 #ifdef _MUTATE_DEBUG
-		cout << "After translation : " << endl;
-		cout << "Coord_A_new : " << Coord_A_new << endl;
-		cout << "Coord_B_new : " << Coord_B_new << endl;
-		cout << "Coord_C_new : " << Coord_C_new<< endl;
+		//cout << "After translation : " << endl;
+		//cout << "Coord_A_new : " << Coord_A_new << endl;
+		//cout << "Coord_B_new : " << Coord_B_new << endl;
+		//cout << "Coord_C_new : " << Coord_C_new<< endl;
 #endif
 
 		vector<dblVec> eTarget;
@@ -1429,15 +1432,15 @@ residue* residue::mutate(const UInt _newTypeIndex)
 		}
 
 #ifdef _MUTATE_DEBUG
-		cout << " e1 : " << eTarget[0] << endl;
-		cout << " e2 : " << eTarget[1] << endl;
-		cout << " e3 : " << eTarget[2] << endl;
-		cout << " eNew : " << endl;
-		cout << " e1 : " << eNew[0] << endl;
-		cout << " e2 : " << eNew[1] << endl;
-		cout << " e3 : " << eNew[2] << endl;
-		cout << "rotation matrix : " << endl;
-		cout << RotMat << endl;
+		//cout << " e1 : " << eTarget[0] << endl;
+		//cout << " e2 : " << eTarget[1] << endl;
+		//cout << " e3 : " << eTarget[2] << endl;
+		//cout << " eNew : " << endl;
+		//cout << " e1 : " << eNew[0] << endl;
+		//cout << " e2 : " << eNew[1] << endl;
+		//cout << " e3 : " << eNew[2] << endl;
+		//cout << "rotation matrix : " << endl;
+		//cout << RotMat << endl;
 #endif
 
 		// newAA->getMainChain(i+1) is the pivot-point atom.

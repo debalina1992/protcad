@@ -32,7 +32,9 @@ int main (int argc, char* argv[])
 
 	 	//UInt resNum = _prot->getNumResidues(0);
 		//UInt randres = rand() % resNum;
-		_prot->mutateWBC(0,8,54);
+		//_prot->activateForRepacking(0,0);
+		//_prot->mutateWBC(0,0,19);
+		pdbWriter(_prot, "mutatedoutput.pdb");
 return 0;
 }
 

@@ -1,0 +1,7 @@
+take protein
+mutate pro to pch
+apply rot on pch
+energy
+if..
+write output pdb
+

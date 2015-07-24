@@ -11,7 +11,7 @@ export MAKE = make
 
 SHELL = /bin/sh
 
-TARGETS = example intraSoluteEnergy mutation1 mutation2 mutation4 mutpch getSequence rotamers
+TARGETS = example intraSoluteEnergy mutation1 mutation2 mutation4 mutpch getSequence rotamers rotamersone rotamersthree rotamersfour rotamersfive test	sampletest
 
 .SUFFIXES:
 .SUFFIXES: .cc .o .h .f .a
@@ -32,7 +32,7 @@ FLAG_OPT2 = -Wall -O2 -g -Wno-deprecated
 FLAG_OPT3 = -Wall -O3  -g -felide-constructors -Wno-deprecated
 FLAG_PROF = -Wall -O3 -felide-constructors -pg -Wno-deprecated
 FLAG_DEBUG = -Wall -g2 -felide-constructors -Wno-deprecated
-FLAG_DEBUG2 = -Wall -g2 -ansi -pedantic -Wno-deprecated
+FLAG_DEBUG2 = -Wall -g2 -ansi -pedantic -Wno-deprecated -fopenmp
 
 CFLAGS = $(FLAG_DEBUG2) $(DEFS)
 FFLAGS = -Wall -g 
@@ -95,6 +95,34 @@ getSequence : libprotcad.a getSequence.cc
 	cd $(OBJDIR) && mv $@ $(BINDIR)
 
 rotamers : libprotcad.a rotamers.cc
+	cd $(OBJDIR) && $(CXX) $(CFLAGS) $^ -o $@ $(INC_BASE) $(LIB_BASE)
+	cd $(OBJDIR) && mv $@ $(BINDIR)
+
+rotamersone : libprotcad.a rotamersone.cc
+	cd $(OBJDIR) && $(CXX) $(CFLAGS) $^ -o $@ $(INC_BASE) $(LIB_BASE)
+	cd $(OBJDIR) && mv $@ $(BINDIR)
+
+rotamersthree : libprotcad.a rotamersthree.cc
+	cd $(OBJDIR) && $(CXX) $(CFLAGS) $^ -o $@ $(INC_BASE) $(LIB_BASE)
+	cd $(OBJDIR) && mv $@ $(BINDIR)
+
+rotamersfour : libprotcad.a rotamersfour.cc
+	cd $(OBJDIR) && $(CXX) $(CFLAGS) $^ -o $@ $(INC_BASE) $(LIB_BASE)
+	cd $(OBJDIR) && mv $@ $(BINDIR)
+
+rotamersfive : libprotcad.a rotamersfive.cc
+	cd $(OBJDIR) && $(CXX) $(CFLAGS) $^ -o $@ $(INC_BASE) $(LIB_BASE)
+	cd $(OBJDIR) && mv $@ $(BINDIR)
+
+test : libprotcad.a test.cc
+	cd $(OBJDIR) && $(CXX) $(CFLAGS) $^ -o $@ $(INC_BASE) $(LIB_BASE)
+	cd $(OBJDIR) && mv $@ $(BINDIR)
+
+sampletest : libprotcad.a sampletest.cc
+	cd $(OBJDIR) && $(CXX) $(CFLAGS) $^ -o $@ $(INC_BASE) $(LIB_BASE)
+	cd $(OBJDIR) && mv $@ $(BINDIR)
+
+sample : libprotcad.a sample.cc
 	cd $(OBJDIR) && $(CXX) $(CFLAGS) $^ -o $@ $(INC_BASE) $(LIB_BASE)
 	cd $(OBJDIR) && mv $@ $(BINDIR)
 

@@ -477,10 +477,14 @@ int protein::mutate(vector <int> _position, UInt _resType)
 
 void protein::mutateWBC(const UInt _chainIndex, const UInt _resIndex, const UInt _aaIndex)
 {
-//	cout << "0" << endl;	
+	cout << "000" << endl;	
 	if(_chainIndex < itsChains.size())
-	{	itsChains[_chainIndex]->mutate(_resIndex,_aaIndex);
+	{	
+		// cout << ".5.5.5 " << endl;
+		itsChains[_chainIndex]->mutate(_resIndex,_aaIndex);
+		//cout << "0.75" << endl;
 		itsChains[_chainIndex]->commitLastMutation();
+		//cout << "111" << endl;	
 		// find chain in independent chain list
 		UInt indChainIndex = 0;
 		for (UInt i=0; i<itsIndependentChainsMap.size(); i++)

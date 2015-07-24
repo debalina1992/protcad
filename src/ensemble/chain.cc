@@ -156,7 +156,7 @@ void chain::activateChainPosition(UInt _indexInChain)
 		UInt initialNumAllowedRes = newCP->getNumAllowedRes();
 		vector<UInt> notAllowedSet;
 		notAllowedSet.resize(0);
-		for (UInt i=0; i< initialNumAllowedRes; i++)
+		/*for (UInt i=0; i< initialNumAllowedRes; i++)
 		{
 			UInt identity = newCP->itsAllowedResidues[i].getIdentity();
 			UInt numBptInPossibleRes = residue::getNumBpt(identity);
@@ -167,7 +167,7 @@ void chain::activateChainPosition(UInt _indexInChain)
 			}
 
 		}
-		/*for (UInt i=0; i<notAllowedSet.size(); i++)
+		for (UInt i=0; i<notAllowedSet.size(); i++)
 		{
 			cout << "noAllowedSet[" << i << "] = " << notAllowedSet[i] << endl;
 		}
@@ -329,16 +329,19 @@ void chain::mutate(const UInt _indexInChain, const UInt _aaType)
             rotState.resize(0);
             if (numBpt >= 0)
             {
+		// cout << " 33" << endl;
                 for (UInt i=0; i < (UInt)numBpt; i++)
-                {
+                {	
+		//	 cout << " 22" << endl ;
                     UInt numChis = getNumChis(_indexInChain,i);
                     if (numChis > 0)
-                    {
+                    {	
+		//	cout << endl<< " 11";
                         UIntVec allowedRotamers = getAllowedRotamers(_indexInChain, _aaType, i);
                         UInt rotIndex = allowedRotamers[0];
                         if (rotIndex >=0)
                         {
-                            //cout << rotIndex << " ";
+                            cout << rotIndex << " ";
                             setRotamerWithoutBuffering(_indexInChain,i,rotIndex);
                         }
                     }
