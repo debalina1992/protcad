@@ -29,10 +29,10 @@ int main (int argc, char* argv[])
 	amberVDW::setScaleFactor(1.0);
     amberVDW::setRadiusScaleFactor(1.0);
 	amberVDW::setLinearRepulsionDampeningOff();
-    amberElec::setScaleFactor(1.0);
+    amberElec::setScaleFactor(0.0);
 	solvation::setItsScaleFactor(0.0);
 
-	double intra = bundle->intraSoluteEnergy(true);
+	double intra = bundle->intraSoluteEnergy(false);
     cout << intra << endl;
 	
 	return 0;
